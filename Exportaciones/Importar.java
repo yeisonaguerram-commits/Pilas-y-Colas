@@ -7,8 +7,8 @@ import java.util.LinkedList;
 import ClaseObjetual.ObjetoPilaCola;
 
 public class Importar {
-    public LinkedList<ObjetoPilaCola> ImportarArchivo() {
-        String rutaArchivo = "datos.txt"; // Cambiado a datos.txt
+    public ObjetoPilaCola[][] ImportarArchivo(int tamañomatriz) {
+        String rutaArchivo = "datos.txt";
         LinkedList<ObjetoPilaCola> lista = new LinkedList<>();
 
         try (BufferedReader br = new BufferedReader(new FileReader(rutaArchivo))) {
@@ -16,15 +16,15 @@ public class Importar {
             ObjetoPilaCola obj = null;
 
             while ((linea = br.readLine()) != null) {
-                linea = linea.trim(); // Limpia espacios raros al inicio y final
+                linea = linea.trim();
 
                 if (linea.startsWith("Id: ")) {
                     if (obj != null) {
                         lista.add(obj); // Guarda el cliente anterior si existía
                     }
-                    // Inicializamos con datos temporales que luego los setters corrigen
-                    obj = new ObjetoPilaCola("", "", 0, 0, 0, 0);
-                    obj.setId(linea.substring(4).trim()); // .substring(4) porque "Id: " son 4 caracteres
+
+                    obj = new ObjetoPilaCola("", "", 0, 0, 0, 0, 0);
+                    obj.setId(linea.substring(4).trim());
 
                 } else if (linea.startsWith("Nombre: ")) {
                     if (obj != null)
@@ -49,17 +49,32 @@ public class Importar {
                 }
             }
 
-            // ¡Crucial! Guarda el último objeto procesado cuando el archivo se termina
             if (obj != null) {
                 lista.add(obj);
             }
 
-            System.out.println("Archivo importado correctamente. Clientes cargados: " + lista.size());
-
         } catch (Exception e) {
             System.out.println("Error al importar el archivo: " + e.getMessage());
         }
-        return lista;
+
+            ObjetoPilaCola[][] matriz = new ObjetoPilaCola[tamañomatriz][tamañomatriz];
+
+            int contador = 0;
+
+            for (int i = 0; i < tamañomatriz; i++) {
+                for (int j = 0; j < tamañomatriz; j++) {
+                    if (contador < lista.size()) {
+                        matriz[i][j] = lista.get(contador);
+                    } else {
+                        matriz[i][j] = null;
+                    }
+                }
+            }
+
+            System.out.println("Archivo importado correctamente. Clientes cargados: " + lista.size());
+
+
+        return matriz;
     }
 
 }

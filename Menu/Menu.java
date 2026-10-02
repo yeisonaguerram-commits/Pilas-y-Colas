@@ -2,7 +2,7 @@ package Menu;
 
 import ClaseObjetual.ObjetoPilaCola;
 import Validaciones.Validaciones;
-import Metodos.Metodos;
+import Metodos.MetodosLlenar;
 
 import java.util.Scanner;
 import java.util.Stack;
@@ -13,23 +13,33 @@ public class Menu {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
 
+
+        MetodosLlenar ml = new MetodosLlenar();
+        Validaciones v = new Validaciones();
+        Exportaciones.Importar imp = new Exportaciones.Importar();
+
+        System.out.println("Ingrese el tamaño de su sada de espera cuadrada");
+        int tamañomatriz = v.ValidarEntero(sc);
         boolean continuar = true;
         int opcion;
 
         Stack<ObjetoPilaCola> pila = new Stack<>();
         Queue<ObjetoPilaCola> cola = new LinkedList<>();
+        ObjetoPilaCola[][] matriz = imp.ImportarArchivo(tamañomatriz);
 
-        Metodos m = new Metodos();
-        Validaciones v = new Validaciones();
-        Exportaciones.Importar imp = new Exportaciones.Importar();
+/*
+// 1. Así instanciabas la clase al principio del main:
+Exportaciones.Importar imp = new Exportaciones.Importar();
 
-        LinkedList<ObjetoPilaCola> datosImportados = imp.ImportarArchivo();
-            for (ObjetoPilaCola cliente : datosImportados) {
-            cola.add(cliente);
-            }
+// 2. Y así es como tenías pensado meter los datos a la cola (usando la LinkedList que devolvía):
+LinkedList<ObjetoPilaCola> datosImportados = imp.ImportarArchivo();
+for (ObjetoPilaCola cliente : datosImportados) {
+    cola.add(cliente); // Cargaba los datos del .txt directo a tu fila de atención
+} */
+
 
         while (continuar) {
-            System.out.println("=== CLINICA PAPIALPA QUESO MONTAÑERO ===");
+            System.out.println("=== HOSPTIAL PAPIALPA QUESO MONTAÑERO ===");
             System.out.println("1. Registrar un cliente");
             System.out.println("2. Consultar los clientes que estan esperando");
             System.out.println("3. Llamar al siguiente cliente");
@@ -44,7 +54,7 @@ public class Menu {
             opcion = v.ValidarEntero(sc);
             switch (opcion) {
                 case 1:
-                    cola = m.LlenarCola(cola, sc, v);
+                    matriz = ml.LlenarMatriz(matriz, sc, v);
                     break;
                 case 2:
                     System.out.println("[INFO] Opción 2: En mantenimiento.");

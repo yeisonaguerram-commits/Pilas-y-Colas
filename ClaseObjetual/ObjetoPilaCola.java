@@ -8,13 +8,15 @@ public class ObjetoPilaCola {
         private int Tipo;
         private int Turno;
         private int Discapacidad;
-        public ObjetoPilaCola(String id, String nombre, int edad, int tipo, int turno, int discapacidad) {
+        private int Estado;
+        public ObjetoPilaCola(String id, String nombre, int edad, int tipo, int turno, int discapacidad, int estado) {
             Id = id;
             Nombre = nombre;
             Edad = edad;
             Tipo = tipo;
             Turno = turno;
             Discapacidad = discapacidad;
+            Estado = estado;
         }
         public String getId() {
             return Id;
@@ -51,5 +53,12 @@ public class ObjetoPilaCola {
         }
         public void setDiscapacidad(int discapacidad) {
             Discapacidad = discapacidad;
+        }
+
+                public int getEstado() {
+            return Estado;
+        }
+        public void setEstado(int estado) {
+            Estado = estado;
         }
     }

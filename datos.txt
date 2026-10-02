@@ -4,6 +4,7 @@ Edad: 54
 Tipo: 2
 Discapacidad: 2
 Turno: 1
+Estado: 1
 -----------------------------------------------------------------
 Id: 1004012345
 Nombre: Juan
@@ -11,6 +12,7 @@ Edad: 15
 Tipo: 1
 Discapacidad: 3
 Turno: 2
+Estado: 1
 -----------------------------------------------------------------
 Id: 39307289
 Nombre: Enilia
@@ -18,6 +20,7 @@ Edad: 78
 Tipo: 2
 Discapacidad: 0
 Turno: 3
+Estado: 1
 -----------------------------------------------------------------
 Id: 98456987
 Nombre: Camilo
@@ -25,6 +28,7 @@ Edad: 78
 Tipo: 3
 Discapacidad: 3
 Turno: 4
+Estado: 1
 -----------------------------------------------------------------
 Id: 1234568797
 Nombre: Ermenegildo
@@ -32,4 +36,5 @@ Edad: 54
 Tipo: 1
 Discapacidad: 3
 Turno: 5
+Estado: 1
 -----------------------------------------------------------------
