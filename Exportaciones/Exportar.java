@@ -20,7 +20,7 @@ public class Exportar {
                     e.write("Tipo: " + obj.getTipo() + "\n");
                     e.write("Discapacidad : " + obj.getDiscapacidad() + "\n");
                     e.write("Turno: " + obj.getTurno() + "\n");
-
+                    e.write("Estado: " + obj.getEstado() + "\n");
                     e.write("------------------------------------------------------ \n");
 
                 }
